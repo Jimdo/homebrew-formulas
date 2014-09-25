@@ -15,20 +15,18 @@ class JenkinsSwarmClient < Formula
 
       source #{etc}/jenkins-swarm-client/jenkins-swarm-client.conf
 
-      OPTIONS=''
+      OPTIONS+=(${SWARM_DESCRIPTION:+-description "$SWARM_DESCRIPTION"})
+      OPTIONS+=(${SWARM_DISABLE_SSL_VERIFICATION:+-disableSslVerification})
+      OPTIONS+=(${SWARM_EXECUTORS:+-executors $SWARM_EXECUTORS})
+      OPTIONS+=(${SWARM_FS_ROOT:+-fsroot $SWARM_FS_ROOT})
+      OPTIONS+=(${SWARM_LABELS:+-labels "$SWARM_LABELS"})
+      OPTIONS+=(${SWARM_MASTER:+-master "$SWARM_MASTER"})
+      OPTIONS+=(${SWARM_MODE:+-mode "$SWARM_MODE"})
+      OPTIONS+=(${SWARM_NAME:+-name "$SWARM_NAME"})
+      OPTIONS+=(${SWARM_PASSWORD:+-password "$SWARM_PASSWORD"})
+      OPTIONS+=(${SWARM_USER_NAME:+-username "$SWARM_USER_NAME"})
 
-      OPTIONS+="  ${SWARM_DESCRIPTION:+-description "$SWARM_DESCRIPTION"}"
-      OPTIONS+="  ${SWARM_DISABLE_SSL_VERIFICATION:+-disableSslVerification}"
-      OPTIONS+="  ${SWARM_EXECUTORS:+-executors $SWARM_EXECUTORS}"
-      OPTIONS+="  ${SWARM_FS_ROOT:+-fsroot $SWARM_FS_ROOT}"
-      OPTIONS+="  ${SWARM_LABELS:+-labels "$SWARM_LABELS"}"
-      OPTIONS+="  ${SWARM_MASTER:+-master "$SWARM_MASTER"}"
-      OPTIONS+="  ${SWARM_MODE:+-mode "$SWARM_MODE"}"
-      OPTIONS+="  ${SWARM_NAME:+-name "$SWARM_NAME"}"
-      OPTIONS+="  ${SWARM_PASSWORD:+-password "$SWARM_PASSWORD"}"
-      OPTIONS+="  ${SWARM_USER_NAME:+-username "$SWARM_USER_NAME"}"
-
-      exec java -jar #{(libexec/"swarm-client-#{version}-jar-with-dependencies.jar")} $OPTIONS
+      exec java -jar #{(libexec/"swarm-client-#{version}-jar-with-dependencies.jar")} "${OPTIONS[@]}"
     EOS
 
     bin.write_jar_script libexec/"swarm-client-#{version}-jar-with-dependencies.jar", "jenkins-swarm-client"
