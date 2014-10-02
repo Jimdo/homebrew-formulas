@@ -70,8 +70,6 @@ class JenkinsSwarmClient < Formula
     EOS
   end
 
-  plist_options :startup => true
-
   def plist; <<-EOS.undent
       <?xml version="1.0" encoding="UTF-8"?>
       <!DOCTYPE plist PUBLIC "-/Apple/DTD PLIST 1.0/EN" "http:/www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -82,14 +80,11 @@ class JenkinsSwarmClient < Formula
           <key>ProgramArguments</key>
           <array>
             <string>#{bin}/jenkins-swarm-client-service-wrapper</string>
-            <string>#{etc}/jenkins-swarm-client/jenkins-swarm-client.conf</string>
           </array>
           <key>KeepAlive</key>
           <true/>
           <key>RunAtLoad</key>
           <true/>
-          <key>UserName</key>
-          <string>root</string>
           <key>StandardErrorPath</key>
           <string>/var/log/jenkins/org.jenkins-ci.slave.jnlp.log</string>
           <key>StandardOutPath</key>
