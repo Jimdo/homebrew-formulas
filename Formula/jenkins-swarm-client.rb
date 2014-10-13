@@ -86,9 +86,9 @@ class JenkinsSwarmClient < Formula
           <key>RunAtLoad</key>
           <true/>
           <key>StandardErrorPath</key>
-          <string>/var/log/jenkins/org.jenkins-ci.slave.jnlp.log</string>
+          <string>#{var}/log/jenkins-swarm-client.log</string>
           <key>StandardOutPath</key>
-          <string>/var/log/jenkins/org.jenkins-ci.slave.jnlp.log</string>
+          <string>#{var}/log/jenkins-swarm-client.log</string>
         </dict>
       </plist>
     EOS
