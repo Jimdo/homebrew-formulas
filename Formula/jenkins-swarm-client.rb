@@ -2,10 +2,10 @@ require 'formula'
 
 class JenkinsSwarmClient < Formula
   homepage 'https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin'
-  version '1.17'
+  version '2.0'
 
   url "http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/#{version}/swarm-client-#{version}-jar-with-dependencies.jar"
-  sha1 '82253c74abff95830a114c1f9b72ed4dedb038de'
+  sha1 '41042bda1a33439a28ac7b78fb34e43a4f0e2370'
 
   def install
     libexec.install "swarm-client-#{version}-jar-with-dependencies.jar"
